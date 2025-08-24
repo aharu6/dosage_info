@@ -15,8 +15,8 @@ match drug:
         disease_options=[
             "無又は低ガンマグロブリン血症",
             "重症感染症における抗生物質との併用",
-            "特発性血小板減少性紫斑病（他剤が無効で、著明な出血傾向があり、外科的処置又は出産等一時的止血管理を必要とする場合）",
-            "川崎病の急性期（重症であり、冠動脈障害の発生の危険がある場合）",
+            "特発性血小板減少性紫斑病",
+            "川崎病の急性期",
             "慢性炎症性脱髄性多発根神経炎（多巣性運動ニューロパチーを含む）の筋力低下の改善",
             "慢性炎症性脱髄性多発根神経炎（多巣性運動ニューロパチーを含む）の運動機能低下の進行抑制（筋力低下の改善が認められた場合）",
             "天疱瘡（ステロイド剤の効果不十分な場合）",
@@ -59,13 +59,13 @@ DOSAGE_FORMULAS={
     lambda w:2500*w,
     ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","重症感染症における抗生物質との併用","max"):
     lambda w:5000*w,
-    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","特発性血小板減少性紫斑病（他剤が無効で、著明な出血傾向があり、外科的処置又は出産等一時的止血管理を必要とする場合）","min"):
+    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","特発性血小板減少性紫斑病","min"):
     lambda w:200*w,
-    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","特発性血小板減少性紫斑病（他剤が無効で、著明な出血傾向があり、外科的処置又は出産等一時的止血管理を必要とする場合）","max"):
+    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","特発性血小板減少性紫斑病","max"):
     lambda w:400*w,
-    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","川崎病の急性期（重症であり、冠動脈障害の発生の危険がある場合）","5days"):
+    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","川崎病の急性期","5days"):
     lambda w:200*w,
-    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","川崎病の急性期（重症であり、冠動脈障害の発生の危険がある場合）","single"):
+    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","川崎病の急性期","single"):
     lambda w:2000*w,
     ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","慢性炎症性脱髄性多発根神経炎（多巣性運動ニューロパチーを含む）の筋力低下の改善"):
     lambda w:400*w,
@@ -81,9 +81,9 @@ DOSAGE_FORMULAS={
     lambda w:400*w,
     ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","ギラン・バレー症候群（急性増悪期で歩行困難な重症例）"):
     lambda w:400*w,
-    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","血清IgG2値の低下を伴う、肺炎球菌又はインフルエンザ菌を起炎菌とする急性中耳炎、急性気管支炎又は肺炎の発症抑制（ワクチン接種による予防及び他の適切な治療を行っても十分な効果が得られず、発症を繰り返す場合に限る）","first"):
+    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","血清IgG2値の低下を伴う、肺炎球菌又はインフルエンザ菌を起炎菌とする急性中耳炎、急性気管支炎又は肺炎の発症抑制","first"):
     lambda w:300*w,
-    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","血清IgG2値の低下を伴う、肺炎球菌又はインフルエンザ菌を起炎菌とする急性中耳炎、急性気管支炎又は肺炎の発症抑制（ワクチン接種による予防及び他の適切な治療を行っても十分な効果が得られず、発症を繰り返す場合に限る）","secondlater"):
+    ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","血清IgG2値の低下を伴う、肺炎球菌又はインフルエンザ菌を起炎菌とする急性中耳炎、急性気管支炎又は肺炎の発症抑制","secondlater"):
     lambda w:200*w,
     ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","多発性筋炎・皮膚筋炎における筋力低下の改善"):
     lambda w:400*w,
@@ -127,70 +127,49 @@ if weight >0:
     dosage_info={
         #グロベニン　最低量〜最高量幅あり
         ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","無又は低ガンマグロブリン血症"):
-        {"display_type":"range"},
-        ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","無又は低ガンマグロブリン血症"):
-        {"display_type":"range"},
+        {"display_type":"range","speed":"common"},
         ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","重症感染症における抗生物質との併用"):
-        {"display_type":"range"},
-        ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","特発性血小板減少性紫斑病（他剤が無効で、著明な出血傾向があり、外科的処置又は出産等一時的止血管理を必要とする場合）"): {
-            "display_type":"range"
-        },
-        ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","川崎病の急性期（重症であり、冠動脈障害の発生の危険がある場合）"): 
-        {
-            "display_type":"select"
-            },
+        {"display_type":"range","speed":"common"},
+        ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","特発性血小板減少性紫斑病"): 
+        {"display_type":"range","speed":"common"},
+        ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","川崎病の急性期"): 
+        {"display_type":"select","speed":"kawasaki"},
         ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","慢性炎症性脱髄性多発根神経炎（多巣性運動ニューロパチーを含む）の筋力低下の改善"):
-        {
-            "display_type":"single"
-        },
-        ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","慢性炎症性脱髄性多発根神経炎（多巣性運動ニューロパチーを含む）の運動機能低下の進行抑制（筋力低下の改善が認められた場合）"):
-        {
-            "display_type":"multiple"
-        },
+        {"display_type":"single","speed":"common"},
+        ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","慢性炎症性脱髄性多発根神経炎（多巣性運動ニューロパチーを含む）の運動機能低下の進行抑制（筋力低下の改善が認められた場合）"):
+        {"display_type":"multiple","speed":"cidp"},
         ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","天疱瘡（ステロイド剤の効果不十分な場合）"):
-        {
-            "display_type":"single"
-        },
+        {"display_type":"single","speed":"common"},
         ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","スティーブンス・ジョンソン症候群及び中毒性表皮壊死症（ステロイド剤の効果不十分な場合）"):
-        {
-            "display_type":"single"
-        },
+        {"display_type":"single","speed":"common"},
         ("乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）","水疱性類天疱瘡（ステロイド剤の効果不十分な場合）"):
-        {
-            "display_type":"single"
-        },
+        {"display_type":"single","speed":"common"},
         ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","ギラン・バレー症候群（急性増悪期で歩行困難な重症例）"):
-        {
-            "display_type":"single"
-        },
-        ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","血清IgG2値の低下を伴う、肺炎球菌又はインフルエンザ菌を起炎菌とする急性中耳炎、急性気管支炎又は肺炎の発症抑制（ワクチン接種による予防及び他の適切な治療を行っても十分な効果が得られず、発症を繰り返す場合に限る）"):
-        {
-            "display_type":"which_days"
-        },
-        ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","多発性筋炎・皮膚筋炎における筋力低下の改善（ステロイド剤が効果不十分な場合に限る）"):
-        {
-            "display_type":"single"
-        },
+        {"display_type":"single","speed":"common"},
+        ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","血清IgG2値の低下を伴う、肺炎球菌又はインフルエンザ菌を起炎菌とする急性中耳炎、急性気管支炎又は肺炎の発症抑制"):
+        {"display_type":"which_days","speed":"common"},
+        ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","多発性筋炎・皮膚筋炎における筋力低下の改善"):
+        {"display_type":"single","speed":"common"},
         ("乾燥ポリエチレングリコール処理人免疫グロベニン（献血グロベニン）","全身型重症筋無力症（ステロイド剤又はステロイド剤以外の免疫抑制剤が無効な場合）"):
-        {"display_type":"single"},
+        {"display_type":"single","speed":"common"},
 
         #献血ベニロン
         ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","低又は無ガンマグロブリン血症"):
-        {"display_type":"range"},
+        {"display_type":"range","speed":"common"},
         ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","重症感染症における抗生物質との併用"):
-        {"display_type":"range"},
-        ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","特発性血小板減少性紫斑病(他剤が無効で著明な出血傾向があり、外科的処置又は出産等一時的止血管理を必要とする場合)"):
-        {"display_type":"range"},
-        ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","川崎病の急性期(重症であり、冠動脈障害の発生の危険がある場合)"):
-        {"display_type":"select"},
+        {"display_type":"range","speed":"common"},
+        ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","特発性血小板減少性紫斑病"):
+        {"display_type":"range","speed":"common"},
+        ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","川崎病の急性期"):
+        {"display_type":"select","speed":"kawasaki"},
         ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","ギラン・バレー症候群(急性増悪期で歩行困難な重症例)"):
-        {"display_type":"single"},
+        {"display_type":"single","speed":"common"},
         ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","好酸球性多発血管炎性肉芽腫症における神経障害の改善(ステロイド剤が効果不十分な場合に限る)"):
-        {"display_type":"single"},
+        {"display_type":"single","speed":"common"},
         ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","慢性炎症性脱髄性多発根神経炎(多巣性運動ニューロパチーを含む)の筋力低下の改善"):
-        {"display_type":"single"},
+        {"display_type":"single","speed":"common"},
         ("乾燥スルホ化人免疫グロブリン（献血ベニロン）","視神経炎の急性期(ステロイド剤が効果不十分な場合)"):
-        {"display_type":"single"},
+        {"display_type":"single","speed":"common"},
 
     }
 
@@ -216,6 +195,21 @@ if weight >0:
                 "5000mg":f"{vial_needed['5000mg']} 瓶"
             }])
             st.dataframe(df)
+        elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
+            st.write(f"投与量: {DOSAGE_FORMULAS[key](weight)} mg")
+            vial_needed={
+                "500mg":(DOSAGE_FORMULAS[key](weight))//500,
+                "1000mg":(DOSAGE_FORMULAS[key](weight))//1000,
+                "2500mg":(DOSAGE_FORMULAS[key](weight))//2500,
+                "5000mg":(DOSAGE_FORMULAS[key](weight))//5000
+            }
+            df =pd.DataFrame([{
+                "500mg":f"{vial_needed['500mg']} 瓶",
+                "1000mg":f"{vial_needed['1000mg']} 瓶",
+                "2500mg":f"{vial_needed['2500mg']} 瓶",
+                "5000mg":f"{vial_needed['5000mg']} 瓶"
+            }])
+            st.dataframe(df)
     elif info["display_type"]=="range":
 
         if drug=="乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）":
@@ -236,6 +230,28 @@ if weight >0:
                 "5000mg":f"{vial_needed_min['5000mg']} 〜 {vial_needed_max['5000mg']} 瓶"
                 }])
 
+            st.dataframe(df)
+        elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
+            st.write(f"投与量: {DOSAGE_FORMULAS[key + ('min',)](weight)} mg 〜 {DOSAGE_FORMULAS[key + ('max',)](weight)} mg")
+            vial_needed_min={
+                "500mg":(DOSAGE_FORMULAS[key + ('min',)](weight))//500,
+                "1000mg":(DOSAGE_FORMULAS[key + ('min',)](weight))//1000,
+                "2500mg":(DOSAGE_FORMULAS[key + ('min',)](weight))//2500,
+                "5000mg":(DOSAGE_FORMULAS[key + ('min',)](weight))//5000
+            }
+            vial_needed_max={
+                "500mg":(DOSAGE_FORMULAS[key + ('max',)](weight))//500,
+                "1000mg":(DOSAGE_FORMULAS[key + ('max',)](weight))//1000,
+                "2500mg":(DOSAGE_FORMULAS[key + ('max',)](weight))//2500,
+                "5000mg":(DOSAGE_FORMULAS[key + ('max',)](weight))//5000
+            }
+            df=pd.DataFrame([
+                {"500mg":f"{vial_needed_min['500mg']} 〜 {vial_needed_max['500mg']} 瓶",
+                "1000mg":f"{vial_needed_min['1000mg']} 〜 {vial_needed_max['1000mg']} 瓶",
+                "2500mg":f"{vial_needed_min['2500mg']} 〜 {vial_needed_max['2500mg']} 瓶",
+                "5000mg":f"{vial_needed_min['5000mg']} 〜 {vial_needed_max['5000mg']} 瓶"
+                }
+            ])
             st.dataframe(df)
 
     elif info["display_type"]=="multiple":
@@ -266,6 +282,8 @@ if weight >0:
                 "5000mg":f"{vial_needed['5000mg']} 瓶"
             }])
             st.dataframe(df2)
+        elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
+            st.write("現在、該当する疾患と投与方法の組み合わせはありません。")
     elif info["display_type"]=="which_days":
         if drug =="乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）":
             st.write(f"初回投与量: {DOSAGE_FORMULAS[key + ('first',)](weight)} mg")
@@ -291,10 +309,11 @@ if weight >0:
             df2=pd.DataFrame([{
                 "500mg":f"{vial_needed_later['500mg']} 瓶",
                 "2500mg":f"{vial_needed_later['2500mg']} 瓶",
-                "5000mg":f"{vial_needed_later['5000mg']} 瓶 "
+                "5000mg":f"{vial_needed_later['5000mg']} 瓶"
             }])
             st.dataframe(df2)
-            
+        elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
+            st.write("現在、該当する疾患と投与方法の組み合わせはありません。")
 
     elif info["display_type"]=="select":
         if drug =="乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）":
@@ -326,3 +345,46 @@ if weight >0:
                         "5000mg":f"{vial_needed['5000mg']} 瓶"
                     }])
                     st.dataframe(df)
+        elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
+            st.write("現在、該当する疾患と投与方法の組み合わせはありません。")
+
+
+    #投与スピード
+    if drug=="乾燥ポリエチレングリコール処理人免疫グロブリン（献血グロベニン）":
+
+        if info["speed"]=="common":
+            #スライダー
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            speed_per_weight = infusion_speed * weight
+            st.write(f"投与速度: {speed_per_weight} mL/分")
+            #投与速度あたりに使用される薬物量
+            #50mg/ml
+            drug_amount=50*speed_per_weight
+            st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
+        elif info["speed"]=="kawasaki":
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            speed_per_weight = infusion_speed * weight
+            st.write(f"投与速度: {speed_per_weight} mL/分")
+            #投与速度あたりに使用される薬物量
+            drug_amount=50*speed_per_weight
+            st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
+            #12時間以上かけて投与しなければならない
+            #最低ml/分の速度
+
+    elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
+        if info["speed"]=="common":
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            speed_per_weight = infusion_speed * weight
+            st.write(f"投与速度: {speed_per_weight} mL/分")
+            #投与速度あたりに使用される薬物量
+            drug_amount=50*speed_per_weight
+            st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
+        elif info["speed"]=="kawasaki":
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            speed_per_weight = infusion_speed * weight
+            st.write(f"投与速度: {speed_per_weight} mL/分")
+            #投与速度あたりに使用される薬物量
+            drug_amount=50*speed_per_weight
+            st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
+            #12時間以上かけて投与しなければならない
+            #最低ml/分の速度
