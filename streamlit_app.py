@@ -174,7 +174,7 @@ if weight >0:
     }
 
     info=dosage_info.get(key,{
-        "display_type":"single"
+        "display_type":"single","speed":"common"
     })
 
     if info["display_type"]=="single":
