@@ -354,17 +354,22 @@ if weight >0:
 
         if info["speed"]=="common":
             #スライダー
-            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.001)
             speed_per_weight = infusion_speed * weight
             st.write(f"投与速度: {speed_per_weight} mL/分")
+            speed_per_hr = speed_per_weight * 60
+            st.write(f"投与速度: {speed_per_hr} mL/時")
             #投与速度あたりに使用される薬物量
             #50mg/ml
             drug_amount=50*speed_per_weight
             st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
         elif info["speed"]=="kawasaki":
-            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.001)
             speed_per_weight = infusion_speed * weight
+            
             st.write(f"投与速度: {speed_per_weight} mL/分")
+            speed_per_hr = speed_per_weight * 60
+            st.write(f"投与速度: {speed_per_hr} mL/時")
             #投与速度あたりに使用される薬物量
             drug_amount=50*speed_per_weight
             st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
@@ -373,16 +378,20 @@ if weight >0:
 
     elif drug=="乾燥スルホ化人免疫グロブリン（献血ベニロン）":
         if info["speed"]=="common":
-            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.001)
             speed_per_weight = infusion_speed * weight
             st.write(f"投与速度: {speed_per_weight} mL/分")
+            speed_per_hr = speed_per_weight * 60
+            st.write(f"投与速度: {speed_per_hr} mL/時")
             #投与速度あたりに使用される薬物量
             drug_amount=50*speed_per_weight
             st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
         elif info["speed"]=="kawasaki":
-            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.01)
+            infusion_speed = st.slider("投与速度(mL/kg/分)",min_value=0.00,max_value=0.06,step=0.001)
             speed_per_weight = infusion_speed * weight
             st.write(f"投与速度: {speed_per_weight} mL/分")
+            speed_per_hr = speed_per_weight * 60
+            st.write(f"投与速度: {speed_per_hr} mL/時")
             #投与速度あたりに使用される薬物量
             drug_amount=50*speed_per_weight
             st.write(f"投与速度あたりの薬物量: {drug_amount} mg/分")
