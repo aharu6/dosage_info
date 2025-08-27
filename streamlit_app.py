@@ -44,7 +44,10 @@ match drug:
 
 #タイトルはつけない
 #体重の入力
-weight=st.number_input("体重(kg)",min_value=0.0,value=0.0,step=0.1)
+weight=st.number_input(
+    "体重(kg)",min_value=0.0,value=0.0,step=0.1,
+    format="%.1f",help="体重をkg単位で入力してください。小数点以下1桁まで入力可能です。"
+        )
 
 #薬剤名と疾患名の組み合わせごとに投与量を計算する
 #最低量と最高投与量は後で
