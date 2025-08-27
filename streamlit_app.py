@@ -45,7 +45,7 @@ match drug:
 #タイトルはつけない
 #体重の入力
 weight=st.number_input(
-    "体重(kg)",min_value=0.0,step=0.1,
+    "体重(kg)",step=0.1,
     help="体重をkg単位で入力してください。小数点以下1桁まで入力可能です。"
 )
 
